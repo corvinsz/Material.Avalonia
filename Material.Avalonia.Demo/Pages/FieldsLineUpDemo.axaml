@@ -33,6 +33,11 @@
                    Text="{Binding Watermark}"
                    Margin="0 2" />
         </StackPanel>
+        <StackPanel>
+          <CheckBox x:Name="cbHasClearButton"
+                    Content="Has ClearButton"
+                    IsCheckedChanged="HasClearButton_IsCheckedChanged" />
+        </StackPanel>
       </WrapPanel>
       
     </Grid>
