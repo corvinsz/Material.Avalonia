@@ -17,7 +17,13 @@
         <Image Width="200" Height="200"
                HorizontalAlignment="Center" VerticalAlignment="Top"
                Source="avares://Material.Avalonia.Demo/Assets/FavIcon_200x.png" Margin="32,32,32,24" />
-        <TextBlock Classes="Headline4 Subheadline" Text="👋 Welcome to Material.Avalonia Demo!" />
+
+      <ProgressBar Value="{Binding TestVM.Progress}"
+                   Minimum="0"
+                   Maximum="100"
+                   Height="30" />
+
+      <TextBlock Classes="Headline4 Subheadline" Text="👋 Welcome to Material.Avalonia Demo!" />
         <TextBlock Classes="Content"
                    Text="Material.Avalonia is a library that could beauty and turning your Avalonia Application from regular design to Material Design like Material Design in XAML! It easy for use to your project! Just install NuGet package, slightly change your App.xaml / App.axaml and your application are ready to go with Material Design!" />
         <TextBlock Classes="Content"

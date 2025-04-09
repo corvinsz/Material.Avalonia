@@ -1,5 +1,7 @@
-﻿using Avalonia.Controls;
+﻿using System.Threading.Tasks;
+using Avalonia.Controls;
 using Avalonia.Dialogs;
+using Material.Avalonia.Demo.ViewModels;
 using Material.Dialog;
 using Material.Styles.Assists;
 
@@ -46,7 +48,20 @@ public partial class Home : UserControl {
 
         InitializeComponent();
         DataContext = this;
+
+        Task.Run(async () => {
+            while (true) {
+                TestVM.Progress += 4;
+                await Task.Delay(200);
+
+                if (TestVM.Progress >= 100) {
+                    TestVM.Progress = 0;
+                }
+            }
+        });
     }
+
+    public MyVM TestVM { get; } = new MyVM();
 
     //public ObservableCollection<FeatureStatusModels> Features { get; private set; }
 
@@ -66,5 +81,16 @@ public partial class Home : UserControl {
     public void ShowAboutAvaloniaUI() {
         var window = TopLevel.GetTopLevel(this) as Window;
         new AboutAvaloniaDialog().ShowDialog(window!);
+    }
+}
+
+public partial class MyVM : ViewModelBase {
+    private int _progress = 0;
+    public int Progress {
+        get => _progress;
+        set {
+            _progress = value;
+            OnPropertyChanged();
+        }
     }
 }
